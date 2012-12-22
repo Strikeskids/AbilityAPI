@@ -8,6 +8,12 @@ import org.powerbot.game.api.wrappers.widget.WidgetChild;
 
 import sk.general.TimedCondition;
 
+/**
+ * An enum specifying the outer tabs in the ability book
+ * 
+ * @author Strikeskids
+ * 
+ */
 public enum AbilityTabs implements Tab {
 	MELEE_TAB(25, 1, 2), RANGE_TAB(11, 3), MAGIC_TAB(33, 4), OTHER_TAB(51, 5, 6);
 
@@ -37,7 +43,7 @@ public enum AbilityTabs implements Tab {
 							}
 						}.waitStop());
 	}
-	
+
 	public static AbilityTabs getCurrent() {
 		for (AbilityTabs t : values()) {
 			if (t.isOpen())

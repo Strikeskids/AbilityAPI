@@ -5,6 +5,12 @@ import org.powerbot.game.api.methods.tab.Skills;
 import sk.tab.InnerAbilityTabs;
 import sk.tab.Tab;
 
+/**
+ * An enum of styles of ability. Corresponds to the skill requirement to use the ability
+ * 
+ * @author Strikeskids
+ * 
+ */
 public enum AbilityStyle {
 	ATTACK(InnerAbilityTabs.ATTACK_TAB, Skills.ATTACK),
 	STRENGTH(InnerAbilityTabs.STRENGTH_TAB, Skills.STRENGTH),
@@ -21,10 +27,20 @@ public enum AbilityStyle {
 		this.skillId = sid;
 	}
 
+	/**
+	 * Gets {@link InnerAbilityTabs} of abilities that is used for this style
+	 * 
+	 * @return the tab of abilities for this style
+	 */
 	public Tab getTab() {
 		return tab;
 	}
 
+	/**
+	 * Gets the skill id for the skill for this style of ability
+	 * 
+	 * @return the skill id
+	 */
 	public int getSkillId() {
 		return skillId;
 	}

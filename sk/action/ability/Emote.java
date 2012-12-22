@@ -12,6 +12,12 @@ import sk.general.Completion;
 import sk.tab.MainTabs;
 import sk.tab.Tab;
 
+/**
+ * The emotes in the emote tab stored as abilities.
+ * 
+ * @author Strikeskids
+ * 
+ */
 public enum Emote implements Ability {
 	YES(0, 9, 855), NO(1, 25, 856), BOW(2, 41, 858), ANGRY(3, 57, 859), THINK(4, 73, 857),
 
@@ -91,6 +97,15 @@ public enum Emote implements Ability {
 	@Override
 	public int getAbilityId() {
 		return abilId;
+	}
+
+	/**
+	 * Gets the animation ids for this emote
+	 * 
+	 * @return an array of animation ids
+	 */
+	public int[] getAnimations() {
+		return animation;
 	}
 
 	private static final int EMOTE_WIDGET = 590, EMOTE_LIST = 8, EMOTE_SCROLLBAR = 7;

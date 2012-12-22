@@ -24,10 +24,10 @@ public class ActionBar {
 
 	private static final int CHATBOX_WIDGET = 137, TEXT_BAR = 56;
 
-	public static boolean dragAbilityToSlot(final Ability a, final int slot) {
+	public static boolean dragToSlot(final Ability a, final int slot) {
 		int id = getAbilityId(slot);
 		return (a != null && checkIndex(slot))
-				&& ((id > 0 && id == a.getAbilityId()) || (a.show() && makeReadyForInteract()
+				&& ((id > 0 && id == a.getAbilityId()) || (setLocked(false) && a.show() && makeReadyForInteract()
 						&& dragBetween(a.getChild(), getMainChild(slot)) && new TimedCondition(2000) {
 					@Override
 					public boolean isDone() {
@@ -36,16 +36,16 @@ public class ActionBar {
 				}.waitStop()));
 	}
 
-	public static boolean dragWidgetToSlot(final WidgetChild wc, final int slot) {
-		return dragBetween(wc, getMainChild(slot));
+	public static boolean dragToSlot(final WidgetChild wc, final int slot) {
+		return setLocked(false) && makeReadyForInteract() && dragBetween(wc, getMainChild(slot));
 	}
 
-	public static boolean dragItemToSlot(final Item i, final int slot) {
+	public static boolean dragToSlot(final Item i, final int slot) {
 		int id = getItemId(slot);
 		WidgetChild wc;
 		return (i != null && checkIndex(slot))
 				&& ((id > 0 && id == i.getId()))
-				|| (MainTabs.INVENTORY.open() && (wc = i.getWidgetChild()) != null && wc.visible()
+				|| (setLocked(false) && MainTabs.INVENTORY.open() && (wc = i.getWidgetChild()) != null && wc.visible()
 						&& makeReadyForInteract() && dragBetween(wc, getMainChild(slot)) && new TimedCondition(2000) {
 					@Override
 					public boolean isDone() {
@@ -54,15 +54,23 @@ public class ActionBar {
 				}.waitStop());
 	}
 
+	/**
+	 * Attempts to remove the ability or item from the action bar
+	 * 
+	 * @param slot
+	 *            the slot to remove
+	 * @return <tt>true</tt> if the slot no longer has anything in it
+	 */
 	public static boolean trashSlot(final int slot) {
-		return checkIndex(slot) && makeReadyForInteract() && dragBetween(getMainChild(slot), getTrashButton())
-				&& new TimedCondition(2000) {
+		return getSlotType(slot) == ActionSlotType.NOTHING
+				|| (checkIndex(slot) && setLocked(false) && makeReadyForInteract()
+						&& dragBetween(getMainChild(slot), getTrashButton()) && new TimedCondition(2000) {
 
 					@Override
 					public boolean isDone() {
 						return getSlotType(slot) == ActionSlotType.NOTHING;
 					}
-				}.waitStop();
+				}.waitStop());
 	}
 
 	private static boolean dragBetween(WidgetChild start, WidgetChild end) {
@@ -114,12 +122,20 @@ public class ActionBar {
 
 				@Override
 				public boolean isDone() {
-					return c.isDone();
+					return c == null || c.isDone();
 				}
 			}.waitStop();
 		}
 	}
 
+	/**
+	 * Attempts to find the {@link Ability} in the action bar
+	 * 
+	 * @param a
+	 *            the Ability to find
+	 * @return the slot in the action bar or <tt>-1</tt> if the Ability was not
+	 *         found
+	 */
 	public static int findAbility(Ability a) {
 		if (a == null)
 			return -1;
@@ -131,7 +147,7 @@ public class ActionBar {
 	}
 
 	public static boolean useSlot(int slot) {
-		if (!checkIndex(slot) || !expandBar(true) || !isReady(slot))
+		if (!checkIndex(slot) || !setExpanded(true) || !isReady(slot))
 			return false;
 		WidgetChild main = getMainChild(slot);
 		Ability thisAbility = getAbilityInSlot(slot);
@@ -153,7 +169,7 @@ public class ActionBar {
 	}
 
 	public static boolean interactSlot(int slot, String action) {
-		if (!checkIndex(slot) || !expandBar(true))
+		if (!checkIndex(slot) || !setExpanded(true))
 			return false;
 		if (action == null || action.length() == 0)
 			return useSlot(slot);
@@ -164,10 +180,20 @@ public class ActionBar {
 		return false;
 	}
 
+	/**
+	 * Makes the action bar ready for interaction
+	 * 
+	 * @return <tt>true</tt> if the action bar is ready after changes
+	 */
 	public static boolean makeReadyForInteract() {
-		return expandBar(true) && clearKeyboard();
+		return setExpanded(true) && clearKeyboard();
 	}
 
+	/**
+	 * Checks to see if the action bar is ready for interaction
+	 * 
+	 * @return <tt>true</tt> if the action bar is ready
+	 */
 	public static boolean isReadyForInteract() {
 		return isExpanded() && !isKeyboardFocused();
 	}
@@ -193,13 +219,18 @@ public class ActionBar {
 		return isExpanded() && Widgets.get(CHATBOX_WIDGET, TEXT_BAR).getTextColor() == 0x0000FF;
 	}
 
-	public static boolean expandBar(final boolean expanded) {
+	/**
+	 * Expands the bar to either open or closed
+	 * 
+	 * @param expanded
+	 *            whether the bar should end open or closed
+	 * @return <tt>true</tt> if the bar ended expanded like the argument
+	 */
+	public static boolean setExpanded(final boolean expanded) {
 		if (isExpanded() == expanded)
 			return true;
 		WidgetChild tc = getExpandButton();
-		if (tc.visible())
-			tc.click(true);
-		return new TimedCondition(1500) {
+		return tc.visible() && tc.click(true) && new TimedCondition(1500) {
 
 			@Override
 			public boolean isDone() {
@@ -208,12 +239,33 @@ public class ActionBar {
 		}.waitStop();
 	}
 
-	// Get main bar data
+	/**
+	 * Locks the bar to either locked or unlocked
+	 * 
+	 * @param locked
+	 *            whether the bar should end locked or unlocked
+	 * @return <tt>true</tt> if the bar ended locked like the argument
+	 */
+	public static boolean setLocked(final boolean locked) {
+		if (isLocked() == locked)
+			return true;
+		if (!setExpanded(true))
+			return false;
+		WidgetChild tc = getLockButton();
+		return tc.visible() && tc.click(true) && new TimedCondition(1500) {
+
+			@Override
+			public boolean isDone() {
+				return isLocked() == locked;
+			}
+		}.waitStop();
+	}
+
 	private static final int BAR_WIDGET = 640;
 	private static final int ADRENALINE = 679;
 	private static final int BAR_LOCKED = 682, BAR_LOCKED_MASK = 0x10;
 
-	private static final int CURRENT_BAR_SETTING = 2831, CURRENT_BAR_MASK = 0x7, CURRENT_BAR_SHIFT = 5; //TODO fix current bar setting
+	private static final int CURRENT_BAR_SETTING = 682, CURRENT_BAR_MASK = 0x7, CURRENT_BAR_SHIFT = 5;
 	private static final int PREV_BAR = 24, NEXT_BAR = 23;
 
 	private static final int MAIN_BAR_CHILD = 4;
@@ -222,14 +274,29 @@ public class ActionBar {
 
 	private static final int LOCK_BUTTON = 26, TRASH_BUTTON = 27;
 
+	/**
+	 * Gets whether the bar is expanded
+	 * 
+	 * @return <tt>true</tt> if the bar is expanded
+	 */
 	public static boolean isExpanded() {
 		return Widgets.get(BAR_WIDGET, MAIN_BAR_CHILD).visible();
 	}
 
+	/**
+	 * Gets whether the bar is locked
+	 * 
+	 * @return <tt>true</tt> if the bar is locked
+	 */
 	public static boolean isLocked() {
 		return Settings.get(BAR_LOCKED, BAR_LOCKED_MASK) == BAR_LOCKED_MASK;
 	}
 
+	/**
+	 * Gets the amount of adrenaline ranging from 0-1000
+	 * 
+	 * @return the amount of adrenaline
+	 */
 	public static int getAdrenaline() {
 		return Settings.get(ADRENALINE);
 	}
@@ -258,6 +325,11 @@ public class ActionBar {
 		return Widgets.get(BAR_WIDGET, PREV_BAR);
 	}
 
+	/**
+	 * Gets the index of the current bar
+	 * 
+	 * @return the index of the current bar
+	 */
 	public static int getCurrentBar() {
 		return Settings.get(CURRENT_BAR_SETTING, CURRENT_BAR_SHIFT, CURRENT_BAR_MASK);
 	}
@@ -282,6 +354,13 @@ public class ActionBar {
 		}
 	}
 
+	/**
+	 * Gets the keybind for this slot as an int
+	 * 
+	 * @param slot
+	 *            the slot to check
+	 * @return the keybind char or <tt>-1</tt> if no such keybind exists
+	 */
 	public static int getKeyBind(int slot) {
 		WidgetChild wc = getKeyChild(slot);
 		if (wc == null)
@@ -292,6 +371,13 @@ public class ActionBar {
 		return text.charAt(0);
 	}
 
+	/**
+	 * Checks to see if the slot is ready (can be used and no reload is present)
+	 * 
+	 * @param slot
+	 *            the slot to check
+	 * @return <tt>true</tt> if the slot is ready
+	 */
 	public static boolean isReady(int slot) {
 		if (getSlotType(slot) == ActionSlotType.NOTHING)
 			return false;
@@ -300,24 +386,42 @@ public class ActionBar {
 				&& ichild.getTextColor() == ITEM_AVAILABLE_TEXT_COLOR;
 	}
 
+	/**
+	 * Gets the item id at the slot from settings
+	 * 
+	 * @param slot
+	 *            the slot to get
+	 * @return the item id if the slot is valid or the
+	 *         {@link ActionBar#DEFAULT_ITEM_SETTING} if it is not
+	 */
 	public static int getItemId(int slot) {
 		return checkIndex(slot) ? Settings.get(ITEM_SETTINGS[slot]) : DEFAULT_ITEM_SETTING;
 	}
 
+	/**
+	 * Gets the ability id at the slot from settings
+	 * 
+	 * @param slot
+	 *            the slot to get
+	 * @return the ability id if the slot is valid or the
+	 *         {@link ActionBar#DEFAULT_ABILITY_SETTING} if it is
+	 *         not
+	 */
 	public static int getAbilityId(int slot) {
 		return checkIndex(slot) ? Settings.get(ABILITY_SETTINGS[slot]) : DEFAULT_ABILITY_SETTING;
 	}
 
-	public static int getId(int slot) {
-		int ret;
-		if ((ret = getItemId(slot)) > DEFAULT_ITEM_SETTING)
-			return ret;
-		else if ((ret = getAbilityId(slot)) > DEFAULT_ABILITY_SETTING)
-			return ret;
-		else
-			return -1;
-	}
-
+	/**
+	 * Gets the type of this slot
+	 * 
+	 * @param slot
+	 *            the slot to check
+	 * @return {@link ActionSlotType#ITEM} if this slot is an item,
+	 *         {@link ActionSlotType#ABILITY} if the slot
+	 *         is an ability, or {@link ActionSlotType#NOTHING} if the slot is
+	 *         invalid or there is nothing in
+	 *         the slot
+	 */
 	public static ActionSlotType getSlotType(int slot) {
 		if (getItemId(slot) > DEFAULT_ITEM_SETTING)
 			return ActionSlotType.ITEM;
@@ -327,33 +431,101 @@ public class ActionBar {
 			return ActionSlotType.NOTHING;
 	}
 
+	/**
+	 * Gets the main child for this slot
+	 * 
+	 * @param slot
+	 *            the slot to get
+	 * @return the main {@link WidgetChild} for this slot or <tt>null</tt> if
+	 *         the slot is invalid
+	 */
 	public static WidgetChild getMainChild(int slot) {
 		return checkIndex(slot) ? Widgets.get(BAR_WIDGET, MAIN_CHILD[slot]) : null;
 	}
 
+	/**
+	 * Gets the child with the keybind as text for this slot
+	 * 
+	 * @param slot
+	 *            the slot to get
+	 * @return the {@link WidgetChild} that has the keybind as text for this
+	 *         slot or <tt>null</tt> if the slot
+	 *         is invalid
+	 */
 	public static WidgetChild getKeyChild(int slot) {
 		return checkIndex(slot) ? Widgets.get(BAR_WIDGET, KEY_CHILD[slot]) : null;
 	}
 
+	/**
+	 * Gets the child with the reload progress for this slot
+	 * 
+	 * @param slot
+	 *            the slot to get
+	 * @return the {@link WidgetChild} that has the reload progress for this
+	 *         slot or <tt>null</tt> if the slot
+	 *         is invalid
+	 */
 	public static WidgetChild getReloadChild(int slot) {
 		return checkIndex(slot) ? Widgets.get(BAR_WIDGET, COOLDOWN_CHILD[slot]) : null;
 	}
 
+	/**
+	 * Gets the child with the item for this slot
+	 * 
+	 * @param slot
+	 *            the slot to get
+	 * @return the item {@link WidgetChild} for this slot or <tt>null</tt> if
+	 *         the slot was invalid
+	 */
 	public static WidgetChild getItemChild(int slot) {
 		return checkIndex(slot) ? Widgets.get(BAR_WIDGET, ITEM_CHILD[slot]) : null;
 	}
 
+	/**
+	 * Checks to see if this slot is valid
+	 * 
+	 * @param slot
+	 *            the slot to check
+	 * @return <tt>true</tt> if this slot is valid
+	 */
 	public static boolean checkIndex(int slot) {
 		return slot >= 0 && slot < NUM_SLOTS;
 	}
 
 	private static Ability loader = null;
 
+	/**
+	 * Gets the {@link Ability} in a slot in the action bar
+	 * 
+	 * @param slot
+	 *            the slot to get
+	 * @return the Ability that corresponds to this slot or <tt>null</tt> if the
+	 *         ability was not recognized or
+	 *         there is no ability in the slot
+	 * @see ActionBar#getAbilityWithId(int)
+	 */
 	public static Ability getAbilityInSlot(int slot) {
 		return getAbilityWithId(getAbilityId(slot));
 	}
 
+	/**
+	 * Gets the {@link Ability} that has the corresponding id and also
+	 * initializes all ability enums
+	 * 
+	 * @param aid
+	 *            the ability id
+	 * @return the Ability that corresponds to this id or <tt>null</tt> if no
+	 *         such ability exists
+	 */
 	public static Ability getAbilityWithId(int aid) {
+		load();
+		return Ability.ALL_ABILITIES.get(aid);
+	}
+
+	/**
+	 * Loads all the abilities from their respective enums. ESSENTIAL FUNCTON to calls!
+	 */
+	public static void load() {
 		if (loader == null) {
 			loader = BookAbility.ANTICIPATION;
 			loader = Emote.ANGRY;
@@ -361,7 +533,6 @@ public class ActionBar {
 			loader = Spell.HOME_TELEPORT;
 			// TODO add more loaders;
 		}
-		return Ability.ALL_ABILITIES.get(aid);
 	}
 
 }

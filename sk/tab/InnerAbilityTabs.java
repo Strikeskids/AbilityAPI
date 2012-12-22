@@ -6,6 +6,12 @@ import org.powerbot.game.api.wrappers.widget.WidgetChild;
 
 import sk.general.TimedCondition;
 
+/**
+ * An enum specifying the inner tabs in the ability book
+ * 
+ * @author Strikeskids
+ * 
+ */
 public enum InnerAbilityTabs implements Tab {
 	ATTACK_TAB(AbilityTabs.MELEE_TAB, 29, 1), STRENGTH_TAB(AbilityTabs.MELEE_TAB, 31, 2),
 

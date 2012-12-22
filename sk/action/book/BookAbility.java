@@ -9,6 +9,12 @@ import sk.action.ActionBar;
 import sk.general.Completion;
 import sk.tab.Tab;
 
+/**
+ * An enum of all abilities found in the ability book that are not spells
+ * 
+ * @author Strikeskids
+ * 
+ */
 public enum BookAbility implements Ability {
 
 	// style type level child booktexture bartexture cooldown
@@ -160,26 +166,59 @@ public enum BookAbility implements Ability {
 		Ability.ALL_ABILITIES.put(this.barTexture, this);
 	}
 
+	/**
+	 * Gets the cooldown time in seconds for this ability
+	 * 
+	 * @return the cooldown time
+	 */
 	public int getCooldown() {
 		return cooldown;
 	}
 
+	/**
+	 * Gets the texture of the ability in the ability book
+	 * 
+	 * @return the texture id of the widget
+	 */
 	public int getTexture() {
 		return bookTexture;
 	}
 
+	/**
+	 * Gets the {@link AbilityType} of this ability (basic, threshold, ultimate)
+	 * 
+	 * @return the type of this ability
+	 */
 	public AbilityType getType() {
 		return type;
 	}
 
+	/**
+	 * Gets the {@link AbilityStyle} of this ability
+	 * 
+	 * @return the style of this ability
+	 */
 	public AbilityStyle getStyle() {
 		return style;
 	}
 
+	/**
+	 * Gets the required level for this ability in the style specified by the ability style
+	 * 
+	 * @return the required level
+	 * @see BookAbility#getStyle()
+	 */
 	public int getRequiredLevel() {
 		return level;
 	}
 
+	/**
+	 * Gets the reload child for this ability in the ability book
+	 * 
+	 * @return the reload child in the ability book
+	 * @see BookAbility#available()
+	 * @see ActionBar#getReloadChild(int)
+	 */
 	public WidgetChild getReloadChild() {
 		if (getChild() == null)
 			return null;
