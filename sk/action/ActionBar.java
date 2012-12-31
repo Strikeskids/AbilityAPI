@@ -163,7 +163,7 @@ public class ActionBar {
 		return (keyed || main.visible() && main.click(true)) && new TimedCondition(2000) {
 			@Override
 			public boolean isDone() {
-				return ret.isDone();
+				return ret == null || ret.isDone();
 			}
 		}.waitStop();
 	}
