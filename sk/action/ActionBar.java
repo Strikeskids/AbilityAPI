@@ -27,8 +27,9 @@ public class ActionBar {
 	public static boolean dragToSlot(final Ability a, final int slot) {
 		int id = getAbilityId(slot);
 		return (a != null && checkIndex(slot))
-				&& ((id > 0 && id == a.getAbilityId()) || (setLocked(false) && a.show() && makeReadyForInteract()
-						&& dragBetween(a.getChild(), getMainChild(slot)) && new TimedCondition(2000) {
+				&& ((id > 0 && id == a.getAbilityId()) || (setLocked(false) && a.show()
+						&& makeReadyForInteract() && dragBetween(a.getChild(), getMainChild(slot)) && new TimedCondition(
+						2000) {
 					@Override
 					public boolean isDone() {
 						return getAbilityId(slot) == a.getAbilityId();
@@ -45,8 +46,10 @@ public class ActionBar {
 		WidgetChild wc;
 		return (i != null && checkIndex(slot))
 				&& ((id > 0 && id == i.getId()))
-				|| (setLocked(false) && MainTabs.INVENTORY.open() && (wc = i.getWidgetChild()) != null && wc.visible()
-						&& makeReadyForInteract() && dragBetween(wc, getMainChild(slot)) && new TimedCondition(2000) {
+				|| (setLocked(false) && MainTabs.INVENTORY.open()
+						&& (wc = i.getWidgetChild()) != null && wc.visible()
+						&& makeReadyForInteract() && dragBetween(wc, getMainChild(slot)) && new TimedCondition(
+						2000) {
 					@Override
 					public boolean isDone() {
 						return getItemId(slot) == i.getId();
@@ -64,7 +67,8 @@ public class ActionBar {
 	public static boolean trashSlot(final int slot) {
 		return getSlotType(slot) == ActionSlotType.NOTHING
 				|| (checkIndex(slot) && setLocked(false) && makeReadyForInteract()
-						&& dragBetween(getMainChild(slot), getTrashButton()) && new TimedCondition(2000) {
+						&& dragBetween(getMainChild(slot), getTrashButton()) && new TimedCondition(
+						2000) {
 
 					@Override
 					public boolean isDone() {
@@ -109,8 +113,9 @@ public class ActionBar {
 		if (a instanceof BookAbility) {
 			BookAbility ba = (BookAbility) a;
 			final WidgetChild r = ba.getReloadChild();
-			return wc != null && wc.visible() && wc.getTextColor() == 0xFFFFFF && r != null && r.validate()
-					&& !r.visible() && wc.click(true) && new TimedCondition(2000) {
+			return wc != null && wc.visible() && wc.getTextColor() == ITEM_AVAILABLE_TEXT_COLOR
+					&& r != null && r.validate() && !r.visible() && wc.click(true)
+					&& new TimedCondition(2000) {
 						@Override
 						public boolean isDone() {
 							return r.visible();
@@ -118,13 +123,14 @@ public class ActionBar {
 					}.waitStop();
 		} else {
 			final Completion c = a.getChange();
-			return wc != null && wc.visible() && c != null && wc.click(true) && new TimedCondition(2000) {
+			return wc != null && wc.visible() && c != null && wc.click(true)
+					&& new TimedCondition(2000) {
 
-				@Override
-				public boolean isDone() {
-					return c == null || c.isDone();
-				}
-			}.waitStop();
+						@Override
+						public boolean isDone() {
+							return c == null || c.isDone();
+						}
+					}.waitStop();
 		}
 	}
 
@@ -133,8 +139,7 @@ public class ActionBar {
 	 * 
 	 * @param a
 	 *            the Ability to find
-	 * @return the slot in the action bar or <tt>-1</tt> if the Ability was not
-	 *         found
+	 * @return the slot in the action bar or <tt>-1</tt> if the Ability was not found
 	 */
 	public static int findAbility(Ability a) {
 		if (a == null)
@@ -146,7 +151,15 @@ public class ActionBar {
 		return -1;
 	}
 
-	public static boolean useSlot(int slot) {
+	/**
+	 * Attempts to use the slot at index slot. Will return differently based on the item at the slot
+	 * 
+	 * @param slot
+	 *            the slot to use
+	 * @return <tt>true</tt> if the slot was clicked successfully and the item is an item, the Ability's
+	 *         change is done, or the Ability has no change; <tt>false</tt> otherwise
+	 */
+	public static boolean useSlot(final int slot) {
 		if (!checkIndex(slot) || !setExpanded(true) || !isReady(slot))
 			return false;
 		WidgetChild main = getMainChild(slot);
@@ -163,7 +176,7 @@ public class ActionBar {
 		return (keyed || main.visible() && main.click(true)) && new TimedCondition(2000) {
 			@Override
 			public boolean isDone() {
-				return ret.isDone();
+				return ret.isDone() || (ret == null && !isReady(slot));
 			}
 		}.waitStop();
 	}
@@ -265,7 +278,8 @@ public class ActionBar {
 	private static final int ADRENALINE = 679;
 	private static final int BAR_LOCKED = 682, BAR_LOCKED_MASK = 0x10;
 
-	private static final int CURRENT_BAR_SETTING = 682, CURRENT_BAR_MASK = 0x7, CURRENT_BAR_SHIFT = 5;
+	private static final int CURRENT_BAR_SETTING = 682, CURRENT_BAR_MASK = 0x7,
+			CURRENT_BAR_SHIFT = 5;
 	private static final int PREV_BAR = 24, NEXT_BAR = 23;
 
 	private static final int MAIN_BAR_CHILD = 4;
@@ -338,9 +352,10 @@ public class ActionBar {
 
 	private static final int NUM_SLOTS = 12;
 
-	private static final int[] ITEM_SETTINGS = new int[NUM_SLOTS], ABILITY_SETTINGS = new int[NUM_SLOTS],
-			MAIN_CHILD = { 34, 38, 41, 44, 47, 50, 53, 56, 59, 62, 65, 68 }, KEY_CHILD = { 70, 75, 79, 83, 87, 91, 95,
-					99, 103, 107, 111, 115 }, COOLDOWN_CHILD = { 36, 73, 77, 81, 85, 89, 93, 97, 101, 105, 109, 113 },
+	private static final int[] ITEM_SETTINGS = new int[NUM_SLOTS],
+			ABILITY_SETTINGS = new int[NUM_SLOTS], MAIN_CHILD = { 34, 38, 41, 44, 47, 50, 53, 56,
+					59, 62, 65, 68 }, KEY_CHILD = { 70, 75, 79, 83, 87, 91, 95, 99, 103, 107, 111,
+					115 }, COOLDOWN_CHILD = { 36, 73, 77, 81, 85, 89, 93, 97, 101, 105, 109, 113 },
 			ITEM_CHILD = { 32, 72, 76, 80, 84, 88, 92, 96, 100, 104, 108, 112 };
 
 	private static final int ITEM_SETTING_START = 811, ABILITY_SETTING_START = 727;
@@ -382,8 +397,8 @@ public class ActionBar {
 		if (getSlotType(slot) == ActionSlotType.NOTHING)
 			return false;
 		WidgetChild rchild = getReloadChild(slot), ichild = getItemChild(slot);
-		return rchild != null && rchild.validate() && !rchild.visible() && ichild != null && ichild.validate()
-				&& ichild.getTextColor() == ITEM_AVAILABLE_TEXT_COLOR;
+		return rchild != null && rchild.validate() && !rchild.visible() && ichild != null
+				&& ichild.validate() && ichild.getTextColor() == ITEM_AVAILABLE_TEXT_COLOR;
 	}
 
 	/**
@@ -391,8 +406,7 @@ public class ActionBar {
 	 * 
 	 * @param slot
 	 *            the slot to get
-	 * @return the item id if the slot is valid or the
-	 *         {@link ActionBar#DEFAULT_ITEM_SETTING} if it is not
+	 * @return the item id if the slot is valid or the {@link ActionBar#DEFAULT_ITEM_SETTING} if it is not
 	 */
 	public static int getItemId(int slot) {
 		return checkIndex(slot) ? Settings.get(ITEM_SETTINGS[slot]) : DEFAULT_ITEM_SETTING;
@@ -403,8 +417,7 @@ public class ActionBar {
 	 * 
 	 * @param slot
 	 *            the slot to get
-	 * @return the ability id if the slot is valid or the
-	 *         {@link ActionBar#DEFAULT_ABILITY_SETTING} if it is
+	 * @return the ability id if the slot is valid or the {@link ActionBar#DEFAULT_ABILITY_SETTING} if it is
 	 *         not
 	 */
 	public static int getAbilityId(int slot) {
@@ -416,10 +429,8 @@ public class ActionBar {
 	 * 
 	 * @param slot
 	 *            the slot to check
-	 * @return {@link ActionSlotType#ITEM} if this slot is an item,
-	 *         {@link ActionSlotType#ABILITY} if the slot
-	 *         is an ability, or {@link ActionSlotType#NOTHING} if the slot is
-	 *         invalid or there is nothing in
+	 * @return {@link ActionSlotType#ITEM} if this slot is an item, {@link ActionSlotType#ABILITY} if the slot
+	 *         is an ability, or {@link ActionSlotType#NOTHING} if the slot is invalid or there is nothing in
 	 *         the slot
 	 */
 	public static ActionSlotType getSlotType(int slot) {
@@ -436,8 +447,7 @@ public class ActionBar {
 	 * 
 	 * @param slot
 	 *            the slot to get
-	 * @return the main {@link WidgetChild} for this slot or <tt>null</tt> if
-	 *         the slot is invalid
+	 * @return the main {@link WidgetChild} for this slot or <tt>null</tt> if the slot is invalid
 	 */
 	public static WidgetChild getMainChild(int slot) {
 		return checkIndex(slot) ? Widgets.get(BAR_WIDGET, MAIN_CHILD[slot]) : null;
@@ -448,8 +458,7 @@ public class ActionBar {
 	 * 
 	 * @param slot
 	 *            the slot to get
-	 * @return the {@link WidgetChild} that has the keybind as text for this
-	 *         slot or <tt>null</tt> if the slot
+	 * @return the {@link WidgetChild} that has the keybind as text for this slot or <tt>null</tt> if the slot
 	 *         is invalid
 	 */
 	public static WidgetChild getKeyChild(int slot) {
@@ -461,8 +470,7 @@ public class ActionBar {
 	 * 
 	 * @param slot
 	 *            the slot to get
-	 * @return the {@link WidgetChild} that has the reload progress for this
-	 *         slot or <tt>null</tt> if the slot
+	 * @return the {@link WidgetChild} that has the reload progress for this slot or <tt>null</tt> if the slot
 	 *         is invalid
 	 */
 	public static WidgetChild getReloadChild(int slot) {
@@ -474,8 +482,7 @@ public class ActionBar {
 	 * 
 	 * @param slot
 	 *            the slot to get
-	 * @return the item {@link WidgetChild} for this slot or <tt>null</tt> if
-	 *         the slot was invalid
+	 * @return the item {@link WidgetChild} for this slot or <tt>null</tt> if the slot was invalid
 	 */
 	public static WidgetChild getItemChild(int slot) {
 		return checkIndex(slot) ? Widgets.get(BAR_WIDGET, ITEM_CHILD[slot]) : null;
@@ -499,8 +506,7 @@ public class ActionBar {
 	 * 
 	 * @param slot
 	 *            the slot to get
-	 * @return the Ability that corresponds to this slot or <tt>null</tt> if the
-	 *         ability was not recognized or
+	 * @return the Ability that corresponds to this slot or <tt>null</tt> if the ability was not recognized or
 	 *         there is no ability in the slot
 	 * @see ActionBar#getAbilityWithId(int)
 	 */
@@ -509,13 +515,11 @@ public class ActionBar {
 	}
 
 	/**
-	 * Gets the {@link Ability} that has the corresponding id and also
-	 * initializes all ability enums
+	 * Gets the {@link Ability} that has the corresponding id and also initializes all ability enums
 	 * 
 	 * @param aid
 	 *            the ability id
-	 * @return the Ability that corresponds to this id or <tt>null</tt> if no
-	 *         such ability exists
+	 * @return the Ability that corresponds to this id or <tt>null</tt> if no such ability exists
 	 */
 	public static Ability getAbilityWithId(int aid) {
 		load();
