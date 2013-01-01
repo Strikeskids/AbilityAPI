@@ -203,7 +203,8 @@ public enum BookAbility implements Ability {
 	}
 
 	/**
-	 * Gets the required level for this ability in the style specified by the ability style
+	 * Gets the required level for this ability in the style specified by the
+	 * ability style
 	 * 
 	 * @return the required level
 	 * @see BookAbility#getStyle()
@@ -239,8 +240,8 @@ public enum BookAbility implements Ability {
 
 	@Override
 	public boolean available() {
-		return Skills.getLevel(style.getSkillId()) >= level
-				&& ActionBar.getAdrenaline() >= type.getAdrenalineRequirement();
+		int curLevel = Skills.getLevel(style.getSkillId());
+		return (curLevel >= level || curLevel == 0) && ActionBar.getAdrenaline() >= type.getAdrenalineRequirement();
 	}
 
 	public Tab getTab() {

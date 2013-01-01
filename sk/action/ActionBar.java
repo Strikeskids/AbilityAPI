@@ -103,14 +103,15 @@ public class ActionBar {
 		if (slot >= 0) {
 			return useSlot(slot);
 		}
-		if (!a.show())
+		if (!a.show()) {
 			return false;
+		}
 		final WidgetChild wc = a.getChild();
 		if (a instanceof BookAbility) {
 			BookAbility ba = (BookAbility) a;
 			final WidgetChild r = ba.getReloadChild();
-			return wc != null && wc.visible() && wc.getTextColor() == 0xFFFFFF && r != null && r.validate()
-					&& !r.visible() && wc.click(true) && new TimedCondition(2000) {
+			return wc != null && wc.visible() && wc.getTextColor() == ITEM_AVAILABLE_TEXT_COLOR && r != null
+					&& r.validate() && !r.visible() && wc.click(true) && new TimedCondition(2000) {
 						@Override
 						public boolean isDone() {
 							return r.visible();
@@ -118,7 +119,7 @@ public class ActionBar {
 					}.waitStop();
 		} else {
 			final Completion c = a.getChange();
-			return wc != null && wc.visible() && c != null && wc.click(true) && new TimedCondition(2000) {
+			return wc != null && wc.visible() && wc.click(true) && new TimedCondition(2000) {
 
 				@Override
 				public boolean isDone() {
@@ -146,7 +147,18 @@ public class ActionBar {
 		return -1;
 	}
 
-	public static boolean useSlot(int slot) {
+	/**
+	 * Attempts to use the slot at index slot. Will return differently based on
+	 * the item at the slot
+	 * 
+	 * @param slot
+	 *            the slot to use
+	 * @return <tt>true</tt> if the slot was clicked successfully and the item
+	 *         is an item, the Ability's
+	 *         change is done, or the Ability has no change; <tt>false</tt>
+	 *         otherwise
+	 */
+	public static boolean useSlot(final int slot) {
 		if (!checkIndex(slot) || !setExpanded(true) || !isReady(slot))
 			return false;
 		WidgetChild main = getMainChild(slot);
@@ -163,7 +175,7 @@ public class ActionBar {
 		return (keyed || main.visible() && main.click(true)) && new TimedCondition(2000) {
 			@Override
 			public boolean isDone() {
-				return ret == null || ret.isDone();
+				return (ret == null) ? !isReady(slot) : ret.isDone();
 			}
 		}.waitStop();
 	}
@@ -523,7 +535,8 @@ public class ActionBar {
 	}
 
 	/**
-	 * Loads all the abilities from their respective enums. ESSENTIAL FUNCTON to calls!
+	 * Loads all the abilities from their respective enums. ESSENTIAL FUNCTON to
+	 * calls!
 	 */
 	public static void load() {
 		if (loader == null) {

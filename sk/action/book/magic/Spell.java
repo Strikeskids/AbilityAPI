@@ -19,94 +19,92 @@ import sk.tab.Tab;
  * 
  */
 public enum Spell implements Ability {
-	AIR_STRIKE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 14, 14348, 230, 0, new Rune(
-			RuneType.AIR, 1)),
-	CONFUSE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 15, 14389, 246, 3, new Rune(RuneType.MIND,
-			1)),
-	WATER_STRIKE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 16, 14349, 262, 5, new Rune(
-			RuneType.AIR, 1), new Rune(RuneType.WATER, 1)),
-	EARTH_STRIKE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 18, 14350, 294, 9, new Rune(
-			RuneType.AIR, 1), new Rune(RuneType.EARTH, 1)),
-	WEAKEN(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 20, 14390, 326, 11, new Rune(RuneType.BODY,
-			1)),
-	FIRE_STRIKE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 21, 14351, 342, 13, new Rune(
-			RuneType.AIR, 1), new Rune(RuneType.FIRE, 1)),
-	AIR_BOLT(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 23, 14352, 374, 17, new Rune(
-			RuneType.AIR, 2)),
-	CURSE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 24, 14391, 390, 19, new Rune(RuneType.CHAOS,
-			1)),
-	BIND(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 25, 14392, 406, 20, new Rune(RuneType.NATURE,
-			1)),
-	WATER_BOLT(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 27, 14353, 438, 23, new Rune(
-			RuneType.AIR, 2), new Rune(RuneType.WATER, 2)),
-	EARTH_BOLT(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 30, 14354, 486, 29, new Rune(
-			RuneType.AIR, 2), new Rune(RuneType.EARTH, 2)),
-	FIRE_BOLT(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 33, 14355, 534, 35, new Rune(
-			RuneType.AIR, 2), new Rune(RuneType.FIRE, 2)),
-	AIR_BLAST(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 37, 14356, 598, 41, new Rune(
-			RuneType.AIR, 3)),
-	WATER_BLAST(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 40, 14357, 646, 47, new Rune(
-			RuneType.AIR, 3), new Rune(RuneType.WATER, 3)),
-	SNARE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 43, 14393, 694, 50, new Rune(
-			RuneType.NATURE, 2)),
-	SLAYER_DART(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 44, 14388, 710, 50, new Rune(
-			RuneType.AIR, 3), new Rune(RuneType.DEATH, 1)),
-	EARTH_BLAST(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 46, 14358, 742, 53, new Rune(
-			RuneType.AIR, 3), new Rune(RuneType.EARTH, 3)),
-	FIRE_BLAST(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 51, 14359, 822, 59, new Rune(
-			RuneType.AIR, 3), new Rune(RuneType.FIRE, 3)),
-	DIVINE_STORM(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 54, 14369, 870, 60, new Rune(
-			RuneType.AIR, 5)),
-	AIR_WAVE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 58, 14360, 934, 62, new Rune(
-			RuneType.AIR, 4)),
-	WATER_WAVE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 61, 14361, 982, 65, new Rune(
-			RuneType.AIR, 4), new Rune(RuneType.WATER, 4)),
+	AIR_STRIKE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 14, 14348, 230, 0, new Rune(RuneType.AIR, 1)),
+	CONFUSE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 15, 14389, 246, 3, new Rune(RuneType.MIND, 1)),
+	WATER_STRIKE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 16, 14349, 262, 5, new Rune(RuneType.AIR,
+			1), new Rune(RuneType.WATER, 1)),
+	EARTH_STRIKE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 18, 14350, 294, 9, new Rune(RuneType.AIR,
+			1), new Rune(RuneType.EARTH, 1)),
+	WEAKEN(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 20, 14390, 326, 11, new Rune(RuneType.BODY, 1)),
+	FIRE_STRIKE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 21, 14351, 342, 13, new Rune(RuneType.AIR,
+			1), new Rune(RuneType.FIRE, 1)),
+	AIR_BOLT(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 23, 14352, 374, 17, new Rune(RuneType.AIR, 2)),
+	CURSE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 24, 14391, 390, 19, new Rune(RuneType.CHAOS, 1)),
+	BIND(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 25, 14392, 406, 20, new Rune(RuneType.NATURE, 1)),
+	WATER_BOLT(
+			Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 27, 14353, 438, 23, new Rune(RuneType.AIR, 2),
+			new Rune(RuneType.WATER, 2)),
+	EARTH_BOLT(
+			Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 30, 14354, 486, 29, new Rune(RuneType.AIR, 2),
+			new Rune(RuneType.EARTH, 2)),
+	FIRE_BOLT(
+			Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 33, 14355, 534, 35, new Rune(RuneType.AIR, 2),
+			new Rune(RuneType.FIRE, 2)),
+	AIR_BLAST(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 37, 14356, 598, 41, new Rune(RuneType.AIR, 3)),
+	WATER_BLAST(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 40, 14357, 646, 47, new Rune(RuneType.AIR,
+			3), new Rune(RuneType.WATER, 3)),
+	SNARE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 43, 14393, 694, 50, new Rune(RuneType.NATURE, 2)),
+	SLAYER_DART(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 44, 14388, 710, 50, new Rune(RuneType.AIR,
+			3), new Rune(RuneType.DEATH, 1)),
+	EARTH_BLAST(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 46, 14358, 742, 53, new Rune(RuneType.AIR,
+			3), new Rune(RuneType.EARTH, 3)),
+	FIRE_BLAST(
+			Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 51, 14359, 822, 59, new Rune(RuneType.AIR, 3),
+			new Rune(RuneType.FIRE, 3)),
+	DIVINE_STORM(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 54, 14369, 870, 60, new Rune(RuneType.AIR,
+			5)),
+	AIR_WAVE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 58, 14360, 934, 62, new Rune(RuneType.AIR, 4)),
+	WATER_WAVE(
+			Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 61, 14361, 982, 65, new Rune(RuneType.AIR, 4),
+			new Rune(RuneType.WATER, 4)),
 	VULNERABILITY(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 63, 14395, 1014, 66, new Rune(
 			RuneType.CHAOS, 1), new Rune(RuneType.SOUL, 1)),
-	EARTH_WAVE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 65, 14362, 1046, 70, new Rune(
-			RuneType.AIR, 4), new Rune(RuneType.EARTH, 4)),
-	ENFEEBLE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 66, 14371, 1062, 73, new Rune(
-			RuneType.BODY, 1), new Rune(RuneType.SOUL, 1)),
-	FIRE_WAVE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 68, 14363, 1094, 75, new Rune(
-			RuneType.AIR, 4), new Rune(RuneType.FIRE, 4)),
+	EARTH_WAVE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 65, 14362, 1046, 70, new Rune(RuneType.AIR,
+			4), new Rune(RuneType.EARTH, 4)),
+	ENFEEBLE(
+			Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 66, 14371, 1062, 73,
+			new Rune(RuneType.BODY, 1), new Rune(RuneType.SOUL, 1)),
+	FIRE_WAVE(
+			Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 68, 14363, 1094, 75, new Rune(RuneType.AIR, 4),
+			new Rune(RuneType.FIRE, 4)),
 	STORM_OF_ARMADYL(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 69, 14369, 1110, 77, new Rune(
 			RuneType.ARMADYL, 1)),
-	ENTANGLE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 70, 14394, 1126, 79, new Rune(
-			RuneType.NATURE, 3)),
-	STAGGER(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 71, 14377, 1142, 80, new Rune(
-			RuneType.MIND, 1), new Rune(RuneType.SOUL, 1)),
-	AIR_SURGE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 73, 14364, 1174, 81, new Rune(
-			RuneType.AIR, 5)),
+	ENTANGLE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 70, 14394, 1126, 79, new Rune(RuneType.NATURE,
+			3)),
+	STAGGER(
+			Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 71, 14377, 1142, 80,
+			new Rune(RuneType.MIND, 1), new Rune(RuneType.SOUL, 1)),
+	AIR_SURGE(
+			Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 73, 14364, 1174, 81, new Rune(RuneType.AIR, 5)),
 	TELEPORT_BLOCK(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 75, 14344, 1206, 85, new Rune(
 			RuneType.CHAOS, 1), new Rune(RuneType.LAW, 1), new Rune(RuneType.DEATH, 1)),
-	EARTH_SURGE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 76, 14366, 1222, 90, new Rune(
-			RuneType.AIR, 5), new Rune(RuneType.EARTH, 5)),
-	WATER_SURGE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 78, 14365, 1254, 85, new Rune(
-			RuneType.AIR, 5), new Rune(RuneType.WATER, 5)),
-	FIRE_SURGE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 80, 14367, 1286, 95, new Rune(
-			RuneType.AIR, 5), new Rune(RuneType.FIRE, 5)),
+	EARTH_SURGE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 76, 14366, 1222, 90, new Rune(RuneType.AIR,
+			5), new Rune(RuneType.EARTH, 5)),
+	WATER_SURGE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 78, 14365, 1254, 85, new Rune(RuneType.AIR,
+			5), new Rune(RuneType.WATER, 5)),
+	FIRE_SURGE(Spellbook.STANDARD, InnerAbilityTabs.COMBAT_SPELL_TAB, 80, 14367, 1286, 95, new Rune(RuneType.AIR,
+			5), new Rune(RuneType.FIRE, 5)),
 	POLYPORE_STRIKE(Spellbook.NONE, InnerAbilityTabs.COMBAT_SPELL_TAB, 162, 14396, 2598, 80),
 
-	MOBILISING_ARMIES_TELEPORT(
-			Spellbook.STANDARD, InnerAbilityTabs.TELEPORT_TAB, 19, 14335, 310, 10, new Rune(RuneType.AIR, 1),
-			new Rune(RuneType.WATER, 1), new Rune(RuneType.LAW, 1)),
-	VARROCK_TELEPORT(Spellbook.STANDARD, InnerAbilityTabs.TELEPORT_TAB, 28, 14336, 454, 25, new Rune(
-			RuneType.AIR, 3), new Rune(RuneType.FIRE, 1), new Rune(RuneType.LAW, 1)),
+	MOBILISING_ARMIES_TELEPORT(Spellbook.STANDARD, InnerAbilityTabs.TELEPORT_TAB, 19, 14335, 310, 10, new Rune(
+			RuneType.AIR, 1), new Rune(RuneType.WATER, 1), new Rune(RuneType.LAW, 1)),
+	VARROCK_TELEPORT(Spellbook.STANDARD, InnerAbilityTabs.TELEPORT_TAB, 28, 14336, 454, 25, new Rune(RuneType.AIR,
+			3), new Rune(RuneType.FIRE, 1), new Rune(RuneType.LAW, 1)),
 	LUMBRIDGE_TELEPORT(Spellbook.STANDARD, InnerAbilityTabs.TELEPORT_TAB, 31, 14334, 502, 31, new Rune(
 			RuneType.AIR, 3), new Rune(RuneType.EARTH, 1), new Rune(RuneType.LAW, 1)),
-	FALADOR_TELEPORT(Spellbook.STANDARD, InnerAbilityTabs.TELEPORT_TAB, 34, 14337, 550, 37, new Rune(
-			RuneType.AIR, 3), new Rune(RuneType.WATER, 1), new Rune(RuneType.LAW, 1)),
-	HOUSE_TELEPORT(Spellbook.STANDARD, InnerAbilityTabs.TELEPORT_TAB, 36, 14338, 582, 40, new Rune(
-			RuneType.AIR, 1), new Rune(RuneType.EARTH, 1), new Rune(RuneType.LAW, 1)),
-	CAMELOT_TELEPORT(Spellbook.STANDARD, InnerAbilityTabs.TELEPORT_TAB, 39, 14339, 630, 45, new Rune(
-			RuneType.AIR, 5), new Rune(RuneType.LAW, 1)),
+	FALADOR_TELEPORT(Spellbook.STANDARD, InnerAbilityTabs.TELEPORT_TAB, 34, 14337, 550, 37, new Rune(RuneType.AIR,
+			3), new Rune(RuneType.WATER, 1), new Rune(RuneType.LAW, 1)),
+	HOUSE_TELEPORT(
+			Spellbook.STANDARD, InnerAbilityTabs.TELEPORT_TAB, 36, 14338, 582, 40, new Rune(RuneType.AIR, 1),
+			new Rune(RuneType.EARTH, 1), new Rune(RuneType.LAW, 1)),
+	CAMELOT_TELEPORT(Spellbook.STANDARD, InnerAbilityTabs.TELEPORT_TAB, 39, 14339, 630, 45, new Rune(RuneType.AIR,
+			5), new Rune(RuneType.LAW, 1)),
 	ARDOUGNE_TELEPORT(Spellbook.STANDARD, InnerAbilityTabs.TELEPORT_TAB, 45, 14340, 726, 51, new Rune(
 			RuneType.WATER, 2), new Rune(RuneType.LAW, 2)),
 	WATCHTOWER_TELEPORT(Spellbook.STANDARD, InnerAbilityTabs.TELEPORT_TAB, 50, 14341, 806, 58, new Rune(
 			RuneType.EARTH, 2), new Rune(RuneType.LAW, 2)),
-	STANDARD_TROLLHEIM_TELEPORT(
-			Spellbook.STANDARD, InnerAbilityTabs.TELEPORT_TAB, 57, 14342, 918, 61,
-			new Rune(RuneType.FIRE, 2), new Rune(RuneType.LAW, 2)),
+	STANDARD_TROLLHEIM_TELEPORT(Spellbook.STANDARD, InnerAbilityTabs.TELEPORT_TAB, 57, 14342, 918, 61, new Rune(
+			RuneType.FIRE, 2), new Rune(RuneType.LAW, 2)),
 	APE_ATOLL_TELEPORT(Spellbook.STANDARD, InnerAbilityTabs.TELEPORT_TAB, 60, 14343, 966, 64, new Rune(
 			RuneType.WATER, 2), new Rune(RuneType.FIRE, 2), new Rune(RuneType.LAW, 2)),
 	TELEOTHER_LUMBRIDGE(Spellbook.STANDARD, InnerAbilityTabs.TELEPORT_TAB, 67, 14345, 1078, 74, new Rune(
@@ -117,20 +115,20 @@ public enum Spell implements Ability {
 			RuneType.LAW, 1), new Rune(RuneType.SOUL, 2)),
 	HOME_TELEPORT(Spellbook.NONE, InnerAbilityTabs.TELEPORT_TAB, 155, 14333, 2491, 0),
 
-	LVL1_ENCHANT(Spellbook.STANDARD, InnerAbilityTabs.OTHER_SPELL_TAB, 17, 14382, 278, 7, new Rune(
-			RuneType.WATER, 1), new Rune(RuneType.COSMIC, 1)),
+	LVL1_ENCHANT(Spellbook.STANDARD, InnerAbilityTabs.OTHER_SPELL_TAB, 17, 14382, 278, 7, new Rune(RuneType.WATER,
+			1), new Rune(RuneType.COSMIC, 1)),
 	BONES_TO_BANANAS(Spellbook.STANDARD, InnerAbilityTabs.OTHER_SPELL_TAB, 22, 14380, 358, 15, new Rune(
 			RuneType.WATER, 2), new Rune(RuneType.EARTH, 2), new Rune(RuneType.NATURE, 1)),
 	LOW_LEVEL_ALCHEMY(Spellbook.STANDARD, InnerAbilityTabs.OTHER_SPELL_TAB, 26, 14378, 422, 21, new Rune(
 			RuneType.FIRE, 3), new Rune(RuneType.NATURE, 1)),
-	LVL2_ENCHANT(Spellbook.STANDARD, InnerAbilityTabs.OTHER_SPELL_TAB, 29, 14385, 470, 27, new Rune(
-			RuneType.AIR, 3), new Rune(RuneType.COSMIC, 1)),
+	LVL2_ENCHANT(Spellbook.STANDARD, InnerAbilityTabs.OTHER_SPELL_TAB, 29, 14385, 470, 27, new Rune(RuneType.AIR,
+			3), new Rune(RuneType.COSMIC, 1)),
 	TELEKINETIC_GRAB(Spellbook.STANDARD, InnerAbilityTabs.OTHER_SPELL_TAB, 32, 14332, 518, 33, new Rune(
 			RuneType.AIR, 1), new Rune(RuneType.LAW, 1)),
 	SUPERHEAT_ITEM(Spellbook.STANDARD, InnerAbilityTabs.OTHER_SPELL_TAB, 38, 14372, 614, 43, new Rune(
 			RuneType.FIRE, 4), new Rune(RuneType.NATURE, 1)),
-	LVL3_ENCHANT(Spellbook.STANDARD, InnerAbilityTabs.OTHER_SPELL_TAB, 41, 14384, 662, 49, new Rune(
-			RuneType.FIRE, 5), new Rune(RuneType.COSMIC, 1)),
+	LVL3_ENCHANT(Spellbook.STANDARD, InnerAbilityTabs.OTHER_SPELL_TAB, 41, 14384, 662, 49, new Rune(RuneType.FIRE,
+			5), new Rune(RuneType.COSMIC, 1)),
 	HIGH_LEVEL_ALCHEMY(Spellbook.STANDARD, InnerAbilityTabs.OTHER_SPELL_TAB, 47, 14379, 758, 55, new Rune(
 			RuneType.FIRE, 5), new Rune(RuneType.NATURE, 1)),
 	CHARGE_WATER_ORB(Spellbook.STANDARD, InnerAbilityTabs.OTHER_SPELL_TAB, 48, 14374, 774, 56, new Rune(
@@ -167,32 +165,36 @@ public enum Spell implements Ability {
 			RuneType.LAW, 2), new Rune(RuneType.BLOOD, 2)),
 	GHORROCK_TELEPORT(Spellbook.ANCIENT, InnerAbilityTabs.TELEPORT_TAB, 104, 14484, 1670, 96, new Rune(
 			RuneType.WATER, 8), new Rune(RuneType.LAW, 2)),
-	GALE_RUSH(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 81, 14485, 1302, 50, new Rune(
-			RuneType.AIR, 3), new Rune(RuneType.DEATH, 1)),
-	ROCK_RUSH(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 82, 14489, 1318, 52, new Rune(
-			RuneType.EARTH, 3), new Rune(RuneType.DEATH, 1)),
+	GALE_RUSH(
+			Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 81, 14485, 1302, 50, new Rune(RuneType.AIR, 3),
+			new Rune(RuneType.DEATH, 1)),
+	ROCK_RUSH(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 82, 14489, 1318, 52, new Rune(RuneType.EARTH,
+			3), new Rune(RuneType.DEATH, 1)),
 	BLOODFIRE_RUSH(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 84, 14497, 1350, 56, new Rune(
 			RuneType.FIRE, 3), new Rune(RuneType.DEATH, 1)),
-	ICE_RUSH(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 85, 14493, 1366, 58, new Rune(
-			RuneType.WATER, 3), new Rune(RuneType.DEATH, 1)),
-	GALE_BURST(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 87, 14486, 1398, 62, new Rune(
-			RuneType.AIR, 4), new Rune(RuneType.DEATH, 2)),
-	ROCK_BURST(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 88, 14490, 1414, 64, new Rune(
-			RuneType.EARTH, 4), new Rune(RuneType.DEATH, 2)),
+	ICE_RUSH(
+			Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 85, 14493, 1366, 58,
+			new Rune(RuneType.WATER, 3), new Rune(RuneType.DEATH, 1)),
+	GALE_BURST(
+			Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 87, 14486, 1398, 62, new Rune(RuneType.AIR, 4),
+			new Rune(RuneType.DEATH, 2)),
+	ROCK_BURST(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 88, 14490, 1414, 64, new Rune(RuneType.EARTH,
+			4), new Rune(RuneType.DEATH, 2)),
 	BLOODFIRE_BURST(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 90, 14498, 1446, 68, new Rune(
 			RuneType.FIRE, 4), new Rune(RuneType.DEATH, 2)),
-	ICE_BURST(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 91, 14494, 1462, 70, new Rune(
-			RuneType.WATER, 4), new Rune(RuneType.DEATH, 2)),
-	GALE_BLITZ(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 93, 14487, 1494, 74, new Rune(
-			RuneType.AIR, 5), new Rune(RuneType.BLOOD, 1)),
-	ROCK_BLITZ(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 94, 14491, 1510, 76, new Rune(
-			RuneType.EARTH, 5), new Rune(RuneType.BLOOD, 1)),
+	ICE_BURST(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 91, 14494, 1462, 70, new Rune(RuneType.WATER,
+			4), new Rune(RuneType.DEATH, 2)),
+	GALE_BLITZ(
+			Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 93, 14487, 1494, 74, new Rune(RuneType.AIR, 5),
+			new Rune(RuneType.BLOOD, 1)),
+	ROCK_BLITZ(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 94, 14491, 1510, 76, new Rune(RuneType.EARTH,
+			5), new Rune(RuneType.BLOOD, 1)),
 	BLOODFIRE_BLITZ(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 96, 14499, 1542, 80, new Rune(
 			RuneType.FIRE, 5), new Rune(RuneType.BLOOD, 1)),
-	ICE_BLITZ(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 97, 14495, 1558, 82, new Rune(
-			RuneType.WATER, 5), new Rune(RuneType.BLOOD, 1)),
-	GALE_BARRAGE(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 99, 14488, 1590, 86, new Rune(
-			RuneType.AIR, 5), new Rune(RuneType.BLOOD, 2)),
+	ICE_BLITZ(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 97, 14495, 1558, 82, new Rune(RuneType.WATER,
+			5), new Rune(RuneType.BLOOD, 1)),
+	GALE_BARRAGE(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 99, 14488, 1590, 86, new Rune(RuneType.AIR,
+			5), new Rune(RuneType.BLOOD, 2)),
 	ROCK_BARRAGE(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 100, 14492, 1606, 88, new Rune(
 			RuneType.EARTH, 5), new Rune(RuneType.BLOOD, 2)),
 	BLOODFIRE_BARRAGE(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 102, 14500, 1638, 92, new Rune(
@@ -200,34 +202,35 @@ public enum Spell implements Ability {
 	ICE_BARRAGE(Spellbook.ANCIENT, InnerAbilityTabs.COMBAT_SPELL_TAB, 103, 14496, 1654, 94, new Rune(
 			RuneType.WATER, 5), new Rune(RuneType.BLOOD, 2)),
 
-	CURE_ME(Spellbook.LUNAR, InnerAbilityTabs.COMBAT_SPELL_TAB, 114, 14421, 1830, 71, new Rune(
-			RuneType.COSMIC, 2), new Rune(RuneType.ASTRAL, 2)),
-	CURE_GROUP(Spellbook.LUNAR, InnerAbilityTabs.COMBAT_SPELL_TAB, 119, 14424, 1910, 74, new Rune(
-			RuneType.COSMIC, 2), new Rune(RuneType.ASTRAL, 2)),
-	STAT_SPY(Spellbook.LUNAR, InnerAbilityTabs.COMBAT_SPELL_TAB, 122, 14435, 1958, 75, new Rune(
-			RuneType.BODY, 5), new Rune(RuneType.COSMIC, 2), new Rune(RuneType.ASTRAL, 2)),
+	CURE_ME(
+			Spellbook.LUNAR, InnerAbilityTabs.COMBAT_SPELL_TAB, 114, 14421, 1830, 71,
+			new Rune(RuneType.COSMIC, 2), new Rune(RuneType.ASTRAL, 2)),
+	CURE_GROUP(Spellbook.LUNAR, InnerAbilityTabs.COMBAT_SPELL_TAB, 119, 14424, 1910, 74, new Rune(RuneType.COSMIC,
+			2), new Rune(RuneType.ASTRAL, 2)),
+	STAT_SPY(
+			Spellbook.LUNAR, InnerAbilityTabs.COMBAT_SPELL_TAB, 122, 14435, 1958, 75, new Rune(RuneType.BODY, 5),
+			new Rune(RuneType.COSMIC, 2), new Rune(RuneType.ASTRAL, 2)),
 	DREAM(
-			Spellbook.LUNAR, InnerAbilityTabs.COMBAT_SPELL_TAB, 129, 14439, 2070, 79, new Rune(RuneType.BODY,
-					5), new Rune(RuneType.COSMIC, 1), new Rune(RuneType.ASTRAL, 2)),
+			Spellbook.LUNAR, InnerAbilityTabs.COMBAT_SPELL_TAB, 129, 14439, 2070, 79, new Rune(RuneType.BODY, 5),
+			new Rune(RuneType.COSMIC, 1), new Rune(RuneType.ASTRAL, 2)),
 	SPIRITUALISE_FOOD(Spellbook.LUNAR, InnerAbilityTabs.COMBAT_SPELL_TAB, 130, 14449, 2086, 80, new Rune(
 			RuneType.BODY, 5), new Rune(RuneType.COSMIC, 3), new Rune(RuneType.ASTRAL, 2)),
-	STAT_RESTORE_POT_SHARE(
-			Spellbook.LUNAR, InnerAbilityTabs.COMBAT_SPELL_TAB, 132, 14413, 2118, 81, new Rune(
-					RuneType.WATER, 10), new Rune(RuneType.EARTH, 10), new Rune(RuneType.ASTRAL, 2)),
+	STAT_RESTORE_POT_SHARE(Spellbook.LUNAR, InnerAbilityTabs.COMBAT_SPELL_TAB, 132, 14413, 2118, 81, new Rune(
+			RuneType.WATER, 10), new Rune(RuneType.EARTH, 10), new Rune(RuneType.ASTRAL, 2)),
 	BOOST_POTION_SHARE(Spellbook.LUNAR, InnerAbilityTabs.COMBAT_SPELL_TAB, 136, 14410, 2182, 84, new Rune(
 			RuneType.WATER, 10), new Rune(RuneType.EARTH, 12), new Rune(RuneType.ASTRAL, 3)),
 	DISRUPTION_SHIELD(Spellbook.LUNAR, InnerAbilityTabs.COMBAT_SPELL_TAB, 145, 14450, 2326, 90, new Rune(
 			RuneType.BODY, 10), new Rune(RuneType.BLOOD, 3), new Rune(RuneType.ASTRAL, 3)),
-	HEAL_OTHER(Spellbook.LUNAR, InnerAbilityTabs.COMBAT_SPELL_TAB, 147, 14419, 2358, 92, new Rune(
-			RuneType.ASTRAL, 3), new Rune(RuneType.LAW, 3), new Rune(RuneType.BLOOD, 1)),
+	HEAL_OTHER(Spellbook.LUNAR, InnerAbilityTabs.COMBAT_SPELL_TAB, 147, 14419, 2358, 92, new Rune(RuneType.ASTRAL,
+			3), new Rune(RuneType.LAW, 3), new Rune(RuneType.BLOOD, 1)),
 	VENGEANCE_OTHER(Spellbook.LUNAR, InnerAbilityTabs.COMBAT_SPELL_TAB, 150, 14420, 2406, 93, new Rune(
 			RuneType.EARTH, 10), new Rune(RuneType.ASTRAL, 3), new Rune(RuneType.DEATH, 3)),
-	VENGEANCE(Spellbook.LUNAR, InnerAbilityTabs.COMBAT_SPELL_TAB, 151, 14423, 2422, 94, new Rune(
-			RuneType.EARTH, 10), new Rune(RuneType.ASTRAL, 4), new Rune(RuneType.DEATH, 2)),
+	VENGEANCE(Spellbook.LUNAR, InnerAbilityTabs.COMBAT_SPELL_TAB, 151, 14423, 2422, 94, new Rune(RuneType.EARTH,
+			10), new Rune(RuneType.ASTRAL, 4), new Rune(RuneType.DEATH, 2)),
 	VENGEANCE_GROUP(Spellbook.LUNAR, InnerAbilityTabs.COMBAT_SPELL_TAB, 152, 14451, 2438, 95, new Rune(
 			RuneType.EARTH, 11), new Rune(RuneType.ASTRAL, 4), new Rune(RuneType.DEATH, 3)),
-	HEAL_GROUP(Spellbook.LUNAR, InnerAbilityTabs.COMBAT_SPELL_TAB, 153, 14425, 2454, 95, new Rune(
-			RuneType.ASTRAL, 4), new Rune(RuneType.LAW, 3), new Rune(RuneType.BLOOD, 2)),
+	HEAL_GROUP(Spellbook.LUNAR, InnerAbilityTabs.COMBAT_SPELL_TAB, 153, 14425, 2454, 95, new Rune(RuneType.ASTRAL,
+			4), new Rune(RuneType.LAW, 3), new Rune(RuneType.BLOOD, 2)),
 	MOONCLAN_TELEPORT(Spellbook.LUNAR, InnerAbilityTabs.TELEPORT_TAB, 111, 14403, 1782, 69, new Rune(
 			RuneType.EARTH, 2), new Rune(RuneType.ASTRAL, 2), new Rune(RuneType.LAW, 1)),
 	TELEGROUP_MOONCLAN(Spellbook.LUNAR, InnerAbilityTabs.TELEPORT_TAB, 112, 14428, 1798, 70, new Rune(
@@ -266,32 +269,37 @@ public enum Spell implements Ability {
 			RuneType.WATER, 10), new Rune(RuneType.ASTRAL, 3), new Rune(RuneType.LAW, 3)),
 	TELEGROUP_TROLLHEIM(Spellbook.LUNAR, InnerAbilityTabs.TELEPORT_TAB, 149, 14454, 2390, 92, new Rune(
 			RuneType.WATER, 20), new Rune(RuneType.ASTRAL, 3), new Rune(RuneType.LAW, 3)),
-	BAKE_PIE(Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 105, 14402, 1686, 65, new Rune(
-			RuneType.WATER, 4), new Rune(RuneType.FIRE, 5), new Rune(RuneType.ASTRAL, 1)),
-	CURE_PLANT(Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 106, 14426, 1702, 66, new Rune(
-			RuneType.EARTH, 8), new Rune(RuneType.ASTRAL, 1)),
-	NPC_CONTACT(Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 108, 14427, 1734, 67, new Rune(
-			RuneType.AIR, 2), new Rune(RuneType.COSMIC, 1), new Rune(RuneType.ASTRAL, 1)),
-	HUMIDIFY(Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 110, 14437, 1766, 68, new Rune(
-			RuneType.WATER, 3), new Rune(RuneType.FIRE, 1), new Rune(RuneType.ASTRAL, 1)),
-	HUNTER_KIT(Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 115, 14438, 1846, 71, new Rune(
-			RuneType.EARTH, 2), new Rune(RuneType.ASTRAL, 2)),
+	BAKE_PIE(
+			Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 105, 14402, 1686, 65, new Rune(RuneType.WATER, 4),
+			new Rune(RuneType.FIRE, 5), new Rune(RuneType.ASTRAL, 1)),
+	CURE_PLANT(
+			Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 106, 14426, 1702, 66, new Rune(RuneType.EARTH, 8),
+			new Rune(RuneType.ASTRAL, 1)),
+	NPC_CONTACT(
+			Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 108, 14427, 1734, 67, new Rune(RuneType.AIR, 2),
+			new Rune(RuneType.COSMIC, 1), new Rune(RuneType.ASTRAL, 1)),
+	HUMIDIFY(
+			Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 110, 14437, 1766, 68, new Rune(RuneType.WATER, 3),
+			new Rune(RuneType.FIRE, 1), new Rune(RuneType.ASTRAL, 1)),
+	HUNTER_KIT(
+			Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 115, 14438, 1846, 71, new Rune(RuneType.EARTH, 2),
+			new Rune(RuneType.ASTRAL, 2)),
 	REPAIR_RUNE_POUCH(Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 120, 14445, 1926, 75, new Rune(
 			RuneType.COSMIC, 1), new Rune(RuneType.ASTRAL, 2), new Rune(RuneType.LAW, 1)),
 	SUPERGLASS_MAKE(Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 125, 14407, 2006, 77, new Rune(
 			RuneType.AIR, 10), new Rune(RuneType.FIRE, 6), new Rune(RuneType.ASTRAL, 2)),
-	REMOTE_FARM(Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 126, 14447, 2022, 78, new Rune(
-			RuneType.EARTH, 2), new Rune(RuneType.ASTRAL, 2), new Rune(RuneType.NATURE, 3)),
+	REMOTE_FARM(Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 126, 14447, 2022, 78, new Rune(RuneType.EARTH,
+			2), new Rune(RuneType.ASTRAL, 2), new Rune(RuneType.NATURE, 3)),
 	STRING_JEWELLERY(Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 131, 14409, 2102, 80, new Rune(
 			RuneType.WATER, 5), new Rune(RuneType.EARTH, 10), new Rune(RuneType.ASTRAL, 2)),
-	MAGIC_IMBUE(Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 133, 14411, 2134, 82, new Rune(
-			RuneType.WATER, 7), new Rune(RuneType.FIRE, 7), new Rune(RuneType.ASTRAL, 2)),
-	MAKE_LEATHER(Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 134, 14448, 2150, 83, new Rune(
-			RuneType.FIRE, 2), new Rune(RuneType.BODY, 2), new Rune(RuneType.ASTRAL, 2)),
-	FERTILE_SOIL(Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 135, 14412, 2166, 83, new Rune(
-			RuneType.EARTH, 15), new Rune(RuneType.ASTRAL, 3), new Rune(RuneType.NATURE, 2)),
-	PLANK_MAKE(Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 139, 14440, 2230, 86, new Rune(
-			RuneType.EARTH, 15), new Rune(RuneType.ASTRAL, 2), new Rune(RuneType.NATURE, 1)),
+	MAGIC_IMBUE(Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 133, 14411, 2134, 82, new Rune(RuneType.WATER,
+			7), new Rune(RuneType.FIRE, 7), new Rune(RuneType.ASTRAL, 2)),
+	MAKE_LEATHER(Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 134, 14448, 2150, 83, new Rune(RuneType.FIRE,
+			2), new Rune(RuneType.BODY, 2), new Rune(RuneType.ASTRAL, 2)),
+	FERTILE_SOIL(Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 135, 14412, 2166, 83, new Rune(RuneType.EARTH,
+			15), new Rune(RuneType.ASTRAL, 3), new Rune(RuneType.NATURE, 2)),
+	PLANK_MAKE(Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 139, 14440, 2230, 86, new Rune(RuneType.EARTH,
+			15), new Rune(RuneType.ASTRAL, 2), new Rune(RuneType.NATURE, 1)),
 	TUNE_BANE_ORE(Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 141, 14452, 2262, 87, new Rune(
 			RuneType.EARTH, 4), new Rune(RuneType.ASTRAL, 2)),
 	SPELLBOOK_SWAP(Spellbook.LUNAR, InnerAbilityTabs.OTHER_SPELL_TAB, 154, 14441, 2470, 96, new Rune(
@@ -344,7 +352,8 @@ public enum Spell implements Ability {
 	@Override
 	public boolean available() {
 		WidgetChild wc = getChild();
-		return getSpellbook().isOpen() && Skills.getLevel(Skills.MAGIC) >= level
+		int curLevel = Skills.getLevel(Skills.MAGIC);
+		return getSpellbook().isOpen() && (curLevel >= level || curLevel == 0)
 				&& (wc == null || wc.getTextColor() == 0xFFFFFF);
 	}
 
