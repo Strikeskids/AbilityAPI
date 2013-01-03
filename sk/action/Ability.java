@@ -66,6 +66,16 @@ public interface Ability {
 	/**
 	 * A {@link HashMap} from all the ability ids to their corresponding ability
 	 */
-	public static HashMap<Integer, Ability> ALL_ABILITIES = new HashMap<Integer, Ability>(2000);
+	public static HashMap<Integer, Ability> ALL_ABILITIES = new AbilityMap(2000);
+	
+	static class AbilityMap extends HashMap<Integer, Ability> {
+
+		private static final long serialVersionUID = -4049206619364768012L;
+		
+		public AbilityMap(int size) {
+			System.out.println("Starting up ability map");
+		}
+		
+	}
 
 }
