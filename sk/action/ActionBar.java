@@ -89,7 +89,7 @@ public class ActionBar {
 		List<BarNode> nodes = new ArrayList<BarNode>(NUM_SLOTS);
 		for (int i = 0; i < NUM_SLOTS; i++) {
 			BarNode cur = getNode(i);
-			if (cur != null && cur.canUse() && (filter == null || filter.accept(cur)))
+			if (cur != null && (filter == null || filter.accept(cur)))
 				nodes.add(cur);
 		}
 		if (nodes.size() > 0 && sorter != null && sorter != SLOT_ORDER)
