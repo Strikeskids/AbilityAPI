@@ -5,8 +5,8 @@ import java.util.EnumSet;
 
 import org.powerbot.script.lang.AbstractQuery;
 import org.powerbot.script.lang.Filter;
-import org.powerbot.script.lang.Identifiable;
 import org.powerbot.script.wrappers.Action.Type;
+import org.powerbot.script.wrappers.Identifiable;
 
 import com.sk.SkMethodContext;
 import com.sk.methods.action.ability.AbilityLevel;

@@ -1,8 +1,8 @@
 package com.sk.methods.action.structure;
 
-import org.powerbot.script.lang.Identifiable;
-import org.powerbot.script.lang.Validatable;
 import org.powerbot.script.wrappers.Component;
+import org.powerbot.script.wrappers.Identifiable;
+import org.powerbot.script.wrappers.Validatable;
 
 import com.sk.SkMethodContext;
 

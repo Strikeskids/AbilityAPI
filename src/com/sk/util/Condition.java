@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.powerbot.script.lang.Validatable;
+import org.powerbot.script.wrappers.Validatable;
 
 public interface Condition {
 	public static final Condition TRUE = new Condition() {
