@@ -1,6 +1,5 @@
 package com.sk.util.time;
 
-import org.powerbot.script.util.Delay;
 import org.powerbot.script.util.Timer;
 
 import com.sk.util.Condition;
